@@ -1,0 +1,20 @@
+{
+  "name": "nfl-challenge",
+  "version": "1.0.0",
+  "description": "The objective of this project is a coding challenge to curate data about NFL teams based on various inputs. This implementaion was built using node version v11.9.0",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "standard",
+    "start": "node server/server.js"
+  },
+  "author": "Ed Wippler",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "pg": "^7.8.0"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1"
+  }
+}
