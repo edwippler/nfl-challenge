@@ -17,7 +17,9 @@ const config = {
 // Create the pool that will be shared by all other modules
 const pool = new pg.Pool(config)
 
-// Pool will log when it connects to the database
+/**
+ * Debug: Pool will log when it connects to the database
+ */ 
 pool.on('connect', () => {
   console.log('Postgesql connected')
 })

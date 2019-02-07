@@ -1,11 +1,13 @@
 {
   "name": "nfl-challenge",
   "version": "1.0.0",
-  "description": "The objective of this project is a coding challenge to curate data about NFL teams based on various inputs. This implementaion was built using node version v11.9.0",
+  "description": "The objective of this project is a coding challenge to curate data about NFL teams based on various inputs.",
   "main": "server/app.js",
   "scripts": {
     "test": "standard",
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js",
+    "data-migration": "node server/utility/data-migration.js"
   },
   "author": "Ed Wippler",
   "license": "ISC",
