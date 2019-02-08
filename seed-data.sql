@@ -83,3 +83,16 @@ CREATE TABLE season(
   ,released_to_clubs          BOOLEAN     
 );
 
+CREATE TABLE team_score(
+id                  SERIAL PRIMARY KEY
+,team_abbr          VARCHAR(30)
+,season_year        SMALLINT
+,week               SMALLINT
+,point_ot           SMALLINT
+,point_q1           SMALLINT
+,point_q2           SMALLINT
+,point_q3           SMALLINT
+,point_q4           SMALLINT
+,point_total        SMALLINT
+,timeouts_remaining SMALLINT
+);
