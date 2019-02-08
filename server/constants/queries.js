@@ -9,3 +9,8 @@ exports.seasonInsertQuery = 'INSERT INTO season (game_id, game_date, game_key, g
 
 exports.scoreInsertQuery = 'INSERT INTO team_score (team_abbr, season_year, week, point_ot, point_q1, point_q2,' +
 ' point_q3, point_q4, point_total, timeouts_remaining) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)'
+
+exports.getTeamByeWeekQuery = 'SELECT s.week AS bye_week FROM generate_series(1,17) s(week)' +
+' WHERE NOT EXISTS (SELECT 1, teams.city_state AS team FROM season' +
+' JOIN teams ON (season.home_team_abbr = teams.abbr OR season.visitor_team_abbr = teams.abbr)' +
+' WHERE teams.abbr = $1 AND week = s.week)'
