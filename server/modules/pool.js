@@ -19,7 +19,7 @@ const pool = new pg.Pool(config)
 
 /**
  * Debug: Pool will log when it connects to the database
- */ 
+ */
 pool.on('connect', () => {
   console.log('Postgesql connected')
 })
