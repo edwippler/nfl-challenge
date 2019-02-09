@@ -44,6 +44,7 @@ exports.getTeamByeWeekWithYearQuery = 'SELECT city_state AS team, series.week AS
 ' GROUP BY series.week, teams.city_state'
 
 /**
- * Queryt to return all bye weeks and teams for a single season/year
+ * Query to return all bye weeks and teams for a single season/year
+ * TODO: Complete this query
  */
 exports.getByeWeeks = 'SELECT all team and bye week combinations based on a single year/season'

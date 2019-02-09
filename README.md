@@ -4,13 +4,15 @@ The goal of this exercise is to create an end-to-end Proof-of-Concept for an NFL
 
 ## GET /score/averageSinceBye/{team abbreviation}[?period={optional  period}]
 If no period is specified, the average returned will be based on the total score.
-Acceptable period input includes 1, 2, 3, 4, or OT. All other periods will return a not-found error. 
+Acceptable period input includes 1, 2, 3, 4, or OT. All other periods will return a not-found error.  
 Response 200: JSON describing team and average score.tExample: <br>
 `{"team": "NO","average_score": "5"}` <br>
 Response 404: No data found for team/period combination
 
 ## GET /schedule/bye[?team={team abbreviation}][&year={season year}]
-If no year is specified, the previous calendar year will be used as the default. 
+If no year is specified, the previous calendar year will be used as the default.  
+Response 200: JSON describing team and bye week. Example: <br>
+`{"team": "Miami", "bye_week": "11"}`
 
 ## Run Local Instructions:
 #### Prerequisites
