@@ -9,7 +9,7 @@ exports.venueQuery = 'INSERT INTO venue (id, site_city, site_fullname, site_stat
 ' VALUES ($1, $2, $3, $4, $5) ON CONFLICT (id) DO NOTHING'
 
 /**
- * Season insert query used in data migration 
+ * Season insert query used in data migration
  */
 exports.seasonInsertQuery = 'INSERT INTO season (game_id, game_date, game_key, game_time_eastern, game_time_local, game_type,' +
 ' home_display_name, home_nickname, home_team_abbr, home_team_id, iso_time, network_channel, ngs_game, season, season_type,' +

@@ -10,7 +10,7 @@ const self = this
  * Helper function to dynamically build query params
  */
 self.buildQueryParams = (team, year) => {
-  let params = [];
+  let params = []
   if (team) {
     params.push(team)
   }
