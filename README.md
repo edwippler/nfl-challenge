@@ -27,9 +27,8 @@ Set up the database using one of the two following options:
 ..* Click button to add database and name database `sport_app`
 ..* Copy text from `seed-data.sql` then paste in client query window and execute queries
 2. Via terminal commnad line:  
-..* Run this command once:`createdb sport_app && psql -h localhost -d sport_app -p 5432 -f {path to SQL script}/seed-data.sql`  
-Seed data using `npm run data-migration` (this step may take up to a minute)  
-Start server using `npm start`  
+..* Run this command once:`createdb sport_app && psql -h localhost -d sport_app -p 5432 -f {path to SQL script}/seed-data.sql`   
+Start server and seed data using `npm start` (This may take a minute for the data migration to complete) 
 You can browse the API endpoints at http://localhost:5000
 
 ## Built With:

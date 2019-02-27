@@ -34,7 +34,7 @@ self.setQueryText = (team) => {
  * Main function to return bye data
  */
 router.get('/bye', (req, res) => {
-  let teamAlias = req.query.team
+  let teamAlias = req.query.team.toUpperCase()
   // Use previous year as default if no year specified
   let year = req.query.year || (new Date().getFullYear() - 1)
   let queryText = self.setQueryText(teamAlias)

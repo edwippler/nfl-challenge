@@ -3,12 +3,6 @@
  */
 
 /**
- * Venue insert query used in data migration
- */
-exports.venueQuery = 'INSERT INTO venue (id, site_city, site_fullname, site_state, roof_type)' +
-' VALUES ($1, $2, $3, $4, $5) ON CONFLICT (id) DO NOTHING'
-
-/**
  * Season insert query used in data migration
  */
 exports.seasonInsertQuery = 'INSERT INTO season (game_id, game_date, game_key, game_time_eastern, game_time_local, game_type,' +
@@ -30,7 +24,7 @@ exports.getTeamByeWeekQuery = 'SELECT city_state AS team, series.week AS bye_wee
 ' LEFT JOIN season on series = season.week CROSS JOIN teams' +
 ' WHERE teams.abbr = $1 AND NOT EXISTS (SELECT 1 FROM season' +
 ' JOIN teams ON (season.home_team_abbr = teams.abbr OR season.visitor_team_abbr = teams.abbr)' +
-' WHERE teams.abbr = $1 AND week = series.week)' +
+' WHERE teams.abbr = $1 AND season.season = $2 AND week = series.week)' +
 ' GROUP BY series.week, teams.city_state'
 
 /**
@@ -40,7 +34,7 @@ exports.getTeamByeWeekWithYearQuery = 'SELECT city_state AS team, series.week AS
 ' LEFT JOIN season on series = season.week CROSS JOIN teams' +
 ' WHERE teams.abbr = $1 AND season.season = $2 AND NOT EXISTS (SELECT 1 FROM season' +
 ' JOIN teams ON (season.home_team_abbr = teams.abbr OR season.visitor_team_abbr = teams.abbr)' +
-' WHERE teams.abbr = $1 AND week = series.week)' +
+' WHERE teams.abbr = $1 AND season.season = $2 AND week = series.week)' +
 ' GROUP BY series.week, teams.city_state'
 
 /**

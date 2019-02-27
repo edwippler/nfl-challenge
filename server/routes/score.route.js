@@ -24,7 +24,7 @@ self.determinePeriod = (selectedPeriod) => {
  * Main Score funtions section to return average score
  */
 router.get('/averageSinceBye/:team', (req, res) => {
-  let teamAlias = req.params.team
+  let teamAlias = req.params.team.toUpperCase()
   let inputPeriod = req.query.period
   // Query for bye week first
   pool.query(queries.getTeamByeWeekQuery, [teamAlias])

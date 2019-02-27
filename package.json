@@ -5,13 +5,14 @@
   "main": "server/app.js",
   "scripts": {
     "test": "standard",
-    "start": "node server/server.js",
+    "start": "npm run data-migration && node server/server.js",
     "dev": "nodemon server/server.js",
     "data-migration": "node server/utility/data-migration.js"
   },
   "author": "Ed Wippler",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "pg": "^7.8.0"

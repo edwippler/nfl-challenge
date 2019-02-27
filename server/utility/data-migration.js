@@ -2,6 +2,7 @@
  * Module dependencies
  */
 const https = require('https')
+const Promise = require('bluebird')
 const pool = require('../modules/pool')
 const queries = require('../constants/queries')
 let self = this
@@ -10,8 +11,11 @@ let self = this
 // Simple message to indicate process started
 console.log('Data migration utility invoked')
 
+/**
+ * Initialize funtion to wrap and execute core data migration functionality
+ */
 self.initialize = () => {
-  let seasonInputs = [2017, 2018]
+  let seasonInputs = [2017]
   for (let i = 0; i < seasonInputs.length; i++) {
     let seasonYear = seasonInputs[i]
     const baseUrl = `https://api.ngs.nfl.com/league/schedule?season=${seasonYear}&seasonType=REG`
