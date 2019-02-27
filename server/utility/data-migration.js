@@ -4,34 +4,19 @@
 const https = require('https')
 const pool = require('../modules/pool')
 const queries = require('../constants/queries')
-const dataUrl = 'https://api.ngs.nfl.com/league/schedule?season=2018&seasonType=REG'
 let self = this
+
 
 // Simple message to indicate process started
 console.log('Data migration utility invoked')
 
-/**
- * Function to populate venue data into the database
- * Note: Could be more efficient using a bulk query,
- * but running into limitations with pg module
- */
-self.seedVenueDataIfMissing = (venue) => {
-  // venue properties
-  let venueParams = [
-    venue.siteId,
-    venue.siteCity,
-    venue.siteFullname,
-    venue.siteState,
-    venue.roofType
-  ]
-  // execute insert query
-  pool.query(queries.venueQuery, venueParams)
-    .then((result) => {
-      // console.log('Success running venue query)
-    })
-    .catch((error) => {
-      console.log(`Error in promise ${error}`)
-    })
+self.initialize = () => {
+  let seasonInputs = [2017, 2018]
+  for (let i = 0; i < seasonInputs.length; i++) {
+    let seasonYear = seasonInputs[i]
+    const baseUrl = `https://api.ngs.nfl.com/league/schedule?season=${seasonYear}&seasonType=REG`
+    self.executeDataFetch(baseUrl)
+  }
 }
 
 /**
@@ -142,7 +127,9 @@ self.seedScoreData = (game) => {
 
 /**
  * Main funciton to retrieve data from url and populate database with values
+ * Note: fix spacing
  */
+self.executeDataFetch = (dataUrl) => {
 https.get(dataUrl, response => {
   response.setEncoding('utf8')
   let rawData = ''
@@ -153,9 +140,12 @@ https.get(dataUrl, response => {
     const data = JSON.parse(rawData)
     for (let i = 0; i < data.length; i++) {
       let gameData = data[i]
-      self.seedVenueDataIfMissing(gameData.site)
       self.seedSeasonData(gameData)
       self.seedScoreData(gameData)
+      // Limit queue to ensure not saturing DB connections - bluebird library -> promise.map
     }
   })
 })
+}
+
+self.initialize()

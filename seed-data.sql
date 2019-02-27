@@ -46,13 +46,6 @@ VALUES (3900,'PIT','Pittsburgh','Pittsburgh Steelers','Steelers','TEAM','AFC','A
 (3300,'NO','New Orleans','New Orleans Saints','Saints','TEAM','NFC','NCS'),
 (3000,'MIN','Minnesota','Minnesota Vikings','Vikings','TEAM','NFC','NCN');
 
-CREATE TABLE venue(
-  id              INTEGER PRIMARY KEY
-  ,site_city      VARCHAR(30)
-  ,site_fullname  VARCHAR(50)
-  ,site_state     VARCHAR(30)
-  ,roof_type      VARCHAR(30)
-);
 
 CREATE TABLE season(
   game_id                     BIGINT PRIMARY KEY
